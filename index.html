@@ -16,7 +16,9 @@
 
 <body>
     <div class="todo-container">
-        <header>To-do Avançado</header>
+        <header>
+            <h2>To-do Avançado</h2>
+        </header>
         <form id="todo-form">
             <p>Adicione sua tarefa</p>
             <div class="form-control">
@@ -26,7 +28,7 @@
                 </button>
             </div>
         </form>
-        <form id="edit-form">
+        <form id="edit-form" class="hide">
             <p>Edite sua tarefa:</p>
             <div class="form-control">
                 <input type="text" id="edit-input">
@@ -53,21 +55,22 @@
                     <option value="todo">A fazer</option>
                 </select>
             </div>
-            <div id="todo-list">
-                <div class="todo">
-                    <h3>Estou fazendo alguma coisa...</h3>
-                    <button class="finish-todo">
-                        <i class="fa-solid fa-check"></i>
-                    </button>
-                    <button class="finish-todo">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                    <button class="finish-todo">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
+        </div>
+        <div id="todo-list">
+            <div class="todo">
+                <h3>Estou fazendo alguma coisa...</h3>
+                <button class="finish-todo">
+                    <i class="fa-solid fa-check"></i>
+                </button>
+                <button class="finish-todo">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="finish-todo">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
         </div>
+
     </div>
 </body>
 
