@@ -5,7 +5,12 @@ const listaCompleta = document.querySelector('.list-tasks')
 let minhaListaDeItens = [];
 
 function adicionarNovaTarefa(){
-    minhaListaDeItens.push(input.value);
+    minhaListaDeItens.push({
+        tarefa: input.value,
+        concluida: false
+    });
+
+    input.value = '';
 
     mostrarTarefas();
 }
@@ -14,13 +19,13 @@ function mostrarTarefas(){
 
     let novaLi = '';
 
-    minhaListaDeItens.forEach((tarefa) => {
+    minhaListaDeItens.forEach((item, posicao) => {
 
         novaLi = novaLi + `
-            <li class="task">
-                <img src="./img/checked.png" alt="check-na-tarefa">
-                <p>${tarefa}</p>
-                <img src="./img/trash.png" alt="excluir-tarefa">
+            <li class="task ${item.concluida && "done"}">
+                <img src="./img/checked.png" alt="check-na-tarefa" onclick="concluirTarefa(${posicao})">
+                <p>${item.tarefa}</p>
+                <img src="./img/trash.png" alt="excluir-tarefa" onclick="deletarItem(${posicao})">
             </li>
 
         
@@ -30,4 +35,17 @@ function mostrarTarefas(){
     listaCompleta.innerHTML = novaLi;
 }
 
+function concluirTarefa(posicao){
+    minhaListaDeItens[posicao].concluida = !minhaListaDeItens[posicao].concluida;
+
+    mostrarTarefas();
+}
+
+function deletarItem(posicao){
+    minhaListaDeItens.splice(posicao, 1);
+
+    mostrarTarefas();
+}
+
 button.addEventListener('click', adicionarNovaTarefa);
+
