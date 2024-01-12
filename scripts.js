@@ -4,7 +4,7 @@ const listaCompleta = document.querySelector('.list-tasks')
 
 let minhaListaDeItens = [];
 
-function adicionarNovaTarefa(){
+function adicionarNovaTarefa() {
     minhaListaDeItens.push({
         tarefa: input.value,
         concluida: false
@@ -15,7 +15,7 @@ function adicionarNovaTarefa(){
     mostrarTarefas();
 }
 
-function mostrarTarefas(){
+function mostrarTarefas() {
 
     let novaLi = '';
 
@@ -33,19 +33,33 @@ function mostrarTarefas(){
     })
 
     listaCompleta.innerHTML = novaLi;
+
+    localStorage.setItem('lista', JSON.stringify(minhaListaDeItens));
 }
 
-function concluirTarefa(posicao){
+function concluirTarefa(posicao) {
     minhaListaDeItens[posicao].concluida = !minhaListaDeItens[posicao].concluida;
 
     mostrarTarefas();
 }
 
-function deletarItem(posicao){
+function deletarItem(posicao) {
     minhaListaDeItens.splice(posicao, 1);
 
     mostrarTarefas();
 }
+
+function recarregarTarefas() {
+    const tarefasDoLocalStorage = localStorage.getItem('lista');
+
+    if (tarefasDoLocalStorage) {
+        minhaListaDeItens = JSON.parse(tarefasDoLocalStorage)
+    }
+
+    mostrarTarefas();
+}
+
+recarregarTarefas();
 
 button.addEventListener('click', adicionarNovaTarefa);
 
